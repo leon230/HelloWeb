@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 
-<project name="HelloWeb" basedir="." default="usage">
+<project name="springapp" basedir="." default="usage">
     <property file="build.properties"/>
 
     <property name="src.dir" value="src"/>
-    <property name="web.dir" value="WebContent"/>
+    <property name="web.dir" value="war"/>
     <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-    <property name="name" value="HelloWeb"/>
+    <property name="name" value="springapp"/>
 
     <path id="master-classpath">
         <fileset dir="${web.dir}/WEB-INF/lib">
@@ -70,28 +70,28 @@
         </copy>
     </target>
 
-    <!-- ============================================================== -->
-    <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
+<!-- ============================================================== -->
 
     <path id="catalina-ant-classpath">
-        <fileset dir="${appserver.lib}">
-            <include name="catalina-ant.jar"/>
-            <include name="tomcat-coyote.jar"/>
-            <include name="tomcat-util.jar"/>
-        </fileset>
-        <fileset dir="${appserver.home}/bin">
-            <include name="tomcat-juli.jar"/>
-        </fileset>
+    	<fileset dir="${appserver.lib}">
+    	           <include name="catalina-ant.jar"/>
+    	           <include name="tomcat-coyote.jar"/>
+    	           <include name="tomcat-util.jar"/>
+    	        </fileset>
+    	    <fileset dir="${appserver.home}/bin">
+    	               <include name="tomcat-juli.jar"/>
+    	    </fileset>
     </path>
-    <taskdef name="catalina-deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-list" classname="org.apache.catalina.ant.ListTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-reload" classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-findleaks" classname="org.apache.catalina.ant.FindLeaksTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-start" classname="org.apache.catalina.ant.StartTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-stop" classname="org.apache.catalina.ant.StopTask" classpathref="catalina-ant-classpath"/>
-    <taskdef name="catalina-undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-list" classname="org.apache.catalina.ant.ListTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-reload" classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-findleaks" classname="org.apache.catalina.ant.FindLeaksTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-start" classname="org.apache.catalina.ant.StartTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-stop" classname="org.apache.catalina.ant.StopTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath"/>
 
 
     <!--<taskdef name="install" classname="org.apache.catalina.ant.InstallTask">
@@ -120,31 +120,31 @@
 
     <target name="reload" description="Reload application in Tomcat">
         <reload url="${tomcat.manager.url}"
-                username="${tomcat.manager.username}"
-                password="${tomcat.manager.password}"
-                path="/${name}"/>
+                 username="${tomcat.manager.username}"
+                 password="${tomcat.manager.password}"
+                 path="/${name}"/>
     </target>
 
     <target name="start" description="Start Tomcat application">
         <start url="${tomcat.manager.url}"
-               username="${tomcat.manager.username}"
-               password="${tomcat.manager.password}"
-               path="/${name}"/>
+                 username="${tomcat.manager.username}"
+                 password="${tomcat.manager.password}"
+                 path="/${name}"/>
     </target>
 
     <target name="stop" description="Stop Tomcat application">
         <stop url="${tomcat.manager.url}"
-              username="${tomcat.manager.username}"
-              password="${tomcat.manager.password}"
-              path="/${name}"/>
+                 username="${tomcat.manager.username}"
+                 password="${tomcat.manager.password}"
+                 path="/${name}"/>
     </target>
 
     <target name="list" description="List Tomcat applications">
         <list url="${tomcat.manager.url}"
-              username="${tomcat.manager.username}"
-              password="${tomcat.manager.password}"/>
+                 username="${tomcat.manager.username}"
+                 password="${tomcat.manager.password}"/>
     </target>
 
-    <!-- End Tomcat tasks -->
+<!-- End Tomcat tasks -->
 
 </project>
